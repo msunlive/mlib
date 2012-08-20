@@ -3,6 +3,7 @@ package {
 
 	public class mlib extends Sprite {
 		public function mlib() {
+			trace("hello world");
 		}
 	}
 }
