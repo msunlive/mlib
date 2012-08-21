@@ -1,13 +1,15 @@
 package cn.msun.event {
-	import cn.msun.core.mlib_internal;
-
-	import flash.utils.getQualifiedClassName;
+    import cn.msun.core.mlib_internal;
+    
+    import flash.utils.getQualifiedClassName;
     use namespace mlib_internal;
     
     /**
      * @author Msun
      */
     public class Event {
+        public static const REMOVE_FROM_TICKER:String = "removeFromTicker";
+        
         private static var pool:Vector.<Event> = new <Event>[];
         
         private var _target:EventSender;
