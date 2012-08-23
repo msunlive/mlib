@@ -12,7 +12,7 @@ package cn.msun.event {
     public class EventSender {
         private var eventListeners:Dictionary = new Dictionary(true);
         private var remainingListeners:Vector.<Function> = new <Function>[];
-        private static var bubbleChainPool:Vector.<IBubble> = new <IBubble>[];
+        private static var bubbleChainPool:Array = [];
         
         public function EventSender() {
         }
