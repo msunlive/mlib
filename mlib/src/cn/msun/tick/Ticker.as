@@ -1,6 +1,6 @@
 package cn.msun.tick {
-	import cn.msun.event.Event;
-	import cn.msun.event.EventSender;
+    import cn.msun.event.Event;
+    import cn.msun.event.EventSender;
     
     /**
      * 管理一组ITick，可变速(FPS)
@@ -12,6 +12,7 @@ package cn.msun.tick {
         private var ticks:Vector.<ITick>;
         private var currentFrame:uint;
         private var currentTime:uint;
+        private var lastCurrentTime:uint;
         private var _speedRate:Number;
         private var interval:Number;
         private var deltaTime:Number;
@@ -19,6 +20,7 @@ package cn.msun.tick {
         public function Ticker() {
             currentFrame = 0;
             currentTime = 0;
+            lastCurrentTime = 0;
             ticks = new <ITick>[];
             interval = 1000 / Clock.FPS;
             deltaTime = 0;
@@ -107,7 +109,7 @@ package cn.msun.tick {
                     tick = ticks[i];
                     
                     if(tick) {
-                        tick.tick(tickTime, currentTime, currentFrame);
+                        tick.tick(currentTime - lastCurrentTime, currentTime, currentFrame);
                         
                         //remove时只是将数组对应位置设为null，现在要将null移到尾部，在下边将删除
                         if(index != i) {
@@ -132,7 +134,9 @@ package cn.msun.tick {
                 }
                 
                 tickTime = 0;
+                lastCurrentTime = currentTime;
             }
+        
         }
         
         private function removeHandler(event:Event):void {

@@ -9,6 +9,7 @@ package {
             trace("hello world");
             Clock.init(stage);
             var ticker:Ticker = new Ticker();
+			ticker.speedRate = 5;
             Clock.add(ticker);
             
             ticker.add(new TickTest());
