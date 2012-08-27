@@ -9,7 +9,7 @@ package {
             trace("hello world");
             Clock.init(stage);
             var ticker:Ticker = new Ticker();
-			ticker.speedRate = 5;
+            ticker.speedRate = 5;
             Clock.add(ticker);
             
             ticker.add(new TickTest());
@@ -27,7 +27,7 @@ class TickTest implements ITick {
     
     public function tick(tickTime:uint, totalTime:uint, frame:uint):void {
         var nowTime:uint = getTimer();
-        trace(nowTime, (nowTime - lastTime), "tickTime", tickTime, "totalTime", totalTime, "frame", frame);
+        trace("getTimer = " + nowTime, (nowTime - lastTime), "tickTime", tickTime, "totalTime", totalTime, "frame", frame);
         lastTime = nowTime;
     }
 }
